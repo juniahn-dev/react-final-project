@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Salmon Poke",
+    "price": 17.95,
+    "allergic": ["salmon", "peanut"]
+  },
+  {
+    "id": 2,
+    "title": "Tuna Poke",
+    "price": 16.24,
+    "allergic": ["tuna", "peanut"]
+  },
+  {
+    "id": 3,
+    "title": "Shrimp Poke",
+    "price": 18.5,
+    "allergic": ["shrimp", "soy"]
+  },
+  {
+    "id": 4,
+    "title": "Spicy Salmon Poke",
+    "price": 18.95,
+    "allergic": ["salmon", "gluten"]
+  },
+  {
+    "id": 5,
+    "title": "Avocado Poke",
+    "price": 15.0,
+    "allergic": ["avocado", "soy"]
+  },
+  {
+    "id": 6,
+    "title": "Tofu Poke",
+    "price": 14.5,
+    "allergic": ["soy", "peanut"]
+  },
+  {
+    "id": 7,
+    "title": "Chicken Poke",
+    "price": 16.75,
+    "allergic": ["gluten", "sesame"]
+  },
+  {
+    "id": 8,
+    "title": "Vegan Poke",
+    "price": 15.25,
+    "allergic": ["soy", "peanut"]
+  },
+  {
+    "id": 9,
+    "title": "Mango Shrimp Poke",
+    "price": 19.0,
+    "allergic": ["shrimp", "mango"]
+  },
+  {
+    "id": 10,
+    "title": "Scallop Poke",
+    "price": 20.0,
+    "allergic": ["scallop", "peanut"]
+  }
+]
