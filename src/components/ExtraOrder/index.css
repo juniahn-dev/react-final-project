@@ -1,0 +1,42 @@
+.extra-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  .title {
+    text-transform: capitalize;
+    font-size: 25px;
+  }
+
+  .ordering {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+
+    .extra {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & + & {
+        margin-top: 10px;
+      }
+
+      .checkbox-name {
+        display: flex;
+        align-items: center;
+
+        text-transform: capitalize;
+
+        .checkbox {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

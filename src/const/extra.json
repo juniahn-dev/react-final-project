@@ -1,0 +1,115 @@
+{
+  "protein": [
+    {
+      "name": "salmon",
+      "allergic": ["salmon"],
+      "price": 0.7
+    },
+    {
+      "name": "spicy salmon",
+      "allergic": ["salmon", "gluten"],
+      "price": 0.8
+    },
+    {
+      "name": "ahi tuna",
+      "allergic": ["tuna"],
+      "price": 0.75
+    },
+    {
+      "name": "spicy tuna",
+      "allergic": ["tuna", "gluten"],
+      "price": 0.85
+    },
+    {
+      "name": "shrimp",
+      "allergic": ["shrimp"],
+      "price": 0.9
+    },
+    {
+      "name": "chicken",
+      "allergic": ["gluten"],
+      "price": 0.6
+    },
+    {
+      "name": "tofu",
+      "allergic": ["soy"],
+      "price": 0.5
+    }
+  ],
+  "additions": [
+    {
+      "name": "avocado",
+      "allergic": ["avocado"],
+      "price": 0.5
+    },
+    {
+      "name": "crab salad",
+      "allergic": ["crab", "soy"],
+      "price": 0.7
+    },
+    {
+      "name": "miso soup",
+      "allergic": ["soy"],
+      "price": 1.0
+    }
+  ],
+  "dressing": [
+    {
+      "name": "teriyaki dressing",
+      "allergic": ["soy", "gluten"],
+      "price": 0.3
+    },
+    {
+      "name": "spicy teriyaki dressing",
+      "allergic": ["soy", "gluten"],
+      "price": 0.35
+    },
+    {
+      "name": "ponzu dressing",
+      "allergic": ["soy", "gluten"],
+      "price": 0.3
+    },
+    {
+      "name": "korean chili dressing",
+      "allergic": ["soy"],
+      "price": 0.4
+    },
+    {
+      "name": "mango aloha dressing",
+      "allergic": ["mango"],
+      "price": 0.45
+    },
+    {
+      "name": "spicy creamy dressing",
+      "allergic": ["soy", "egg"],
+      "price": 0.5
+    },
+    {
+      "name": "sesame ginger dressing",
+      "allergic": ["sesame", "soy"],
+      "price": 0.4
+    },
+    {
+      "name": "wasabi paste",
+      "allergic": ["soy"],
+      "price": 0.25
+    }
+  ],
+  "topping": [
+    {
+      "name": "nori",
+      "allergic": [],
+      "price": 0.2
+    },
+    {
+      "name": "fried onion flakes",
+      "allergic": ["gluten"],
+      "price": 0.25
+    },
+    {
+      "name": "nori and fried onion flakes",
+      "allergic": ["gluten"],
+      "price": 0.4
+    }
+  ]
+}

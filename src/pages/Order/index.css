@@ -1,3 +1,105 @@
 .order-container {
-  background-color: chocolate;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+
+    .poke-image {
+      width: 700px;
+    }
+  }
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 80px;
+
+    .poke-information {
+      padding: 20px 0;
+      margin-bottom: 20px;
+      border-bottom: 10px solid lightgray;
+
+      .title {
+        margin-bottom: 20px;
+
+        font-size: 25px;
+      }
+
+      .price {
+        margin-bottom: 20px;
+
+        font-size: 20px;
+      }
+
+      .allergies {
+        display: flex;
+        align-items: center;
+
+        margin: 20px 0;
+
+        .allergic {
+          background-color: rgba(249, 75, 75, 0.862);
+          padding: 7px;
+          border-radius: 6px;
+          margin-left: 10px;
+
+          text-transform: capitalize;
+          color: #fff;
+        }
+      }
+
+      .amount {
+        display: flex;
+        align-items: center;
+
+        margin-top: 10px;
+
+        font-size: 20px;
+
+        .count {
+          padding: 0 10px;
+        }
+
+        .amount-count {
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 20px;
+          background-color: lightgray;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .order-button {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto;
+      background-color: rgb(33, 33, 33);
+      margin-top: 20px;
+      padding: 15px 300px;
+      border-radius: 30px;
+
+      color: #fff;
+      font-size: 20px;
+
+      .total-price {
+        margin-left: 10px;
+
+        color: #a9a9a9;
+      }
+    }
+  }
 }
