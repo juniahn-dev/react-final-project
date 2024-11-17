@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Order from "./pages/Order";
+import Survey from "./pages/Survey";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="order/:id" element={<Order />} />
             <Route path="login" element={<Login />} />
+            <Route path="survey" element={<Survey />} />
           </Route>
         </Routes>
       </BrowserRouter>
