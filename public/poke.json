@@ -3,80 +3,130 @@
     "id": 1,
     "title": "Salmon Poke",
     "price": 17.95,
-    "allergic": ["salmon", "peanut"],
+    "allergic": [
+      "salmon",
+      "peanut"
+    ],
     "description": "A smooth and flavorful poke featuring fresh salmon and nutty ingredients.",
-    "imageUrl": "https://www.fromnorway.com/globalassets/recipes/salmon/easy-salmon-bowl.jpg?width=1100&height=964&transform=downFill&hash=99a924832e165fa5da93a2a739187cc3"
+    "imageUrl": "https://www.fromnorway.com/globalassets/recipes/salmon/easy-salmon-bowl.jpg?width=1100&height=964&transform=downFill&hash=99a924832e165fa5da93a2a739187cc3",
+    "flavour": "savoury",
+    "mainIngredient": "fish"
   },
   {
     "id": 2,
     "title": "Tuna Poke",
     "price": 16.24,
-    "allergic": ["tuna", "peanut"],
+    "allergic": [
+      "tuna",
+      "peanut"
+    ],
     "description": "A tuna poke that brings the fresh taste of the sea, with a rich and savory flavor.",
-    "imageUrl": "https://getfish.com.au/cdn/shop/articles/Step_3_-_Tuna_Poke_Bowl.png?v=1723275961"
+    "imageUrl": "https://getfish.com.au/cdn/shop/articles/Step_3_-_Tuna_Poke_Bowl.png?v=1723275961",
+    "flavour": "savoury",
+    "mainIngredient": "fish"
   },
   {
     "id": 3,
     "title": "Shrimp Poke",
     "price": 18.5,
-    "allergic": ["shrimp", "soy"],
+    "allergic": [
+      "shrimp",
+      "soy"
+    ],
     "description": "A delightful poke with plump shrimp and a hint of soy, perfect for seafood lovers.",
-    "imageUrl": "https://hellofrozenbananas.com/wp-content/uploads/2022/08/shrimp-poke-bowl-1.jpg"
+    "imageUrl": "https://hellofrozenbananas.com/wp-content/uploads/2022/08/shrimp-poke-bowl-1.jpg",
+    "flavour": "savoury",
+    "mainIngredient": "seafood"
   },
   {
     "id": 4,
     "title": "Spicy Salmon Poke",
     "price": 18.95,
-    "allergic": ["salmon", "gluten"],
+    "allergic": [
+      "salmon",
+      "gluten"
+    ],
     "description": "Fresh salmon with a spicy kick, offering a flavorful twist on a classic poke.",
-    "imageUrl": "https://res.cloudinary.com/hksqkdlah/image/upload/SFS_PokeCover_118_t0pc7z.jpg"
+    "imageUrl": "https://res.cloudinary.com/hksqkdlah/image/upload/SFS_PokeCover_118_t0pc7z.jpg",
+    "flavour": "spicy",
+    "mainIngredient": "fish"
   },
   {
     "id": 5,
     "title": "Avocado Poke",
     "price": 15.0,
-    "allergic": ["avocado", "soy"],
+    "allergic": [
+      "avocado",
+      "soy"
+    ],
     "description": "Creamy avocado combined with fresh ingredients, creating a light and refreshing poke.",
-    "imageUrl": "https://www.australianavocados.com.au/wp-content/uploads/2020/03/AV_TunaPoke.jpg"
+    "imageUrl": "https://www.australianavocados.com.au/wp-content/uploads/2020/03/AV_TunaPoke.jpg",
+    "flavour": "mild",
+    "mainIngredient": "vegetable"
   },
   {
     "id": 6,
     "title": "Tofu Poke",
     "price": 14.5,
-    "allergic": ["soy", "peanut"],
+    "allergic": [
+      "soy",
+      "peanut"
+    ],
     "description": "A plant-based poke with tofu and nutty flavors, perfect for a vegan option.",
-    "imageUrl": "https://www.house-foods.com/assets/image-cache/uploads/recipes/tofu-poke-bowl.c86d3627.jpg"
+    "imageUrl": "https://www.house-foods.com/assets/image-cache/uploads/recipes/tofu-poke-bowl.c86d3627.jpg",
+    "flavour": "mild",
+    "mainIngredient": "vegetable"
   },
   {
     "id": 7,
     "title": "Chicken Poke",
     "price": 16.75,
-    "allergic": ["gluten", "sesame"],
+    "allergic": [
+      "gluten",
+      "sesame"
+    ],
     "description": "Tender chicken in a flavorful mix with sesame, ideal for those looking for a non-seafood option.",
-    "imageUrl": "https://thecommunalfeast.com/wp-content/uploads/2020/06/california-chicken-poke-11-768x1024.jpg"
+    "imageUrl": "https://thecommunalfeast.com/wp-content/uploads/2020/06/california-chicken-poke-11-768x1024.jpg",
+    "flavour": "savoury",
+    "mainIngredient": "meat"
   },
   {
     "id": 8,
     "title": "Vegan Poke",
     "price": 15.25,
-    "allergic": ["soy", "peanut"],
+    "allergic": [
+      "soy",
+      "peanut"
+    ],
     "description": "A vegan-friendly poke with soy-based ingredients and a hint of nuttiness.",
-    "imageUrl": "https://www.noracooks.com/wp-content/uploads/2022/06/vegan-poke-bowl-6.jpg"
+    "imageUrl": "https://www.noracooks.com/wp-content/uploads/2022/06/vegan-poke-bowl-6.jpg",
+    "flavour": "mild",
+    "mainIngredient": "vegetable"
   },
   {
     "id": 9,
     "title": "Mango Shrimp Poke",
     "price": 19.0,
-    "allergic": ["shrimp", "mango"],
+    "allergic": [
+      "shrimp",
+      "mango"
+    ],
     "description": "Juicy shrimp and sweet mango combine for a tropical twist on traditional poke.",
-    "imageUrl": "https://healthfulblondie.com/wp-content/uploads/2022/10/shrimp-poke-bowl.jpg"
+    "imageUrl": "https://healthfulblondie.com/wp-content/uploads/2022/10/shrimp-poke-bowl.jpg",
+    "flavour": "sweet",
+    "mainIngredient": "seafood"
   },
   {
     "id": 10,
     "title": "Scallop Poke",
     "price": 20.0,
-    "allergic": ["scallop", "peanut"],
+    "allergic": [
+      "scallop",
+      "peanut"
+    ],
     "description": "A luxurious scallop poke, offering a rich and delicate taste for seafood enthusiasts.",
-    "imageUrl": "https://www.sunnysidehanne.com/wp-content/uploads/2019/12/Vegan-Scallop-Pok%C3%A9-Bowl-with-Sesame-Lime-Sauce-4-scaled.jpg"
+    "imageUrl": "https://www.sunnysidehanne.com/wp-content/uploads/2019/12/Vegan-Scallop-Pok%C3%A9-Bowl-with-Sesame-Lime-Sauce-4-scaled.jpg",
+    "flavour": "savoury",
+    "mainIngredient": "seafood"
   }
 ]
