@@ -50,20 +50,6 @@ export default function Survey() {
         });
     };
 
-    // first modal
-    const handleAllergySubmit = () => {
-        const data = { allergies, isVegan };
-        localStorage.setItem("userDietPreferences", JSON.stringify(data));
-        setShowAllergyModal(false);
-        console.log("Preferences saved:", data);
-    };
-
-    // second modal
-    // const handleSurveySubmit = () => {
-    //     const filteredPoke = <FilterPoke surveyAnswers={surveyAnswers} />;
-    //     setRecommendedPoke(filteredPoke);
-    // };
-
     return (
         <>
             <div className="surveyBtnContainer">
@@ -103,15 +89,6 @@ export default function Survey() {
                                 />
                                 Vegan
                             </label>
-                        </div>
-                        <div className="surveySubmit-container">
-                            <button
-                                className="surveySubmit"
-                                type="button"
-                                onClick={handleAllergySubmit}
-                            >
-                                Submit
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -216,30 +193,12 @@ export default function Survey() {
                                 </label>
                             </div>
                         </div>
-                        <div className="surveySubmit-container">
-                            <button
-                                className="surveySubmit"
-                                type="button"
-                            // onClick={handleSurveySubmit}
-                            >
-                                Submit
-                            </button>
-                        </div>
 
                         {/* poke recommendation */}
-                        {/* <div>
-                            {recommendedPoke.length > 0 ? (
-                                recommendedPoke.map(poke => (
-                                    <div key={poke.id}>
-                                        <h3>{poke.title}</h3>
-                                        <img src={poke.imageUrl} alt={poke.title} />
-                                        <p>{poke.description}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p>.</p>
-                            )}
-                        </div> */}
+                        <div class="recomPoke">
+                            <p>Here are some suggested pokes for you</p>
+                            <FilterPoke surveyAnswers={surveyAnswers} />
+                        </div>
                     </div>
                 </div>
             )}
