@@ -18,48 +18,57 @@
     margin-bottom: 10px;
   }
 
-  .poke-info-container {
+  .invoice-wrapper {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    & + & {
-      border-top: 1px solid lightgray;
-      margin-top: 20px;
-      padding-top: 20px;
-    }
+    min-height: 600px;
+    margin-top: 30px;
 
-    .poke-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 5px;
-    }
-
-    .poke-info {
+    .poke-info-container {
       display: flex;
-      justify-content: space-between;
 
-      width: 100%;
-      margin-left: 10px;
+      & + & {
+        border-top: 1px solid lightgray;
+        margin-top: 20px;
+        padding-top: 20px;
+      }
 
-      .info-list {
+      .poke-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+      }
+
+      .poke-info {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
+        justify-content: space-between;
 
-        .additional-list {
+        width: 100%;
+        margin-left: 10px;
+
+        .info-list {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 20px;
 
-          width: 400px;
+          .additional-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
 
-          .additional-info {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
+            width: 400px;
 
-            color: rgb(143, 143, 143);
+            .additional-info {
+              display: grid;
+              grid-template-columns: 2fr 1fr;
 
-            .additional-title {
-              text-transform: capitalize;
+              color: rgb(143, 143, 143);
+
+              .additional-title {
+                text-transform: capitalize;
+              }
             }
           }
         }
@@ -68,12 +77,54 @@
   }
 
   .add-more-items-btn {
-    width: 100%;
+    cursor: pointer;
+
     margin-top: 20px;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid black;
     border-radius: 40px;
 
     text-align: center;
+
+    &:hover {
+      background-color: rgb(232, 232, 232);
+    }
+  }
+
+  .pickup-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgray;
+
+    .pickup-info-image {
+      margin-right: 10px;
+    }
+  }
+
+  .final-step {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 30px;
+
+    .amount-step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pay-button {
+      background-color: rgb(33, 33, 33);
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 40px;
+
+      color: white;
+    }
   }
 }
