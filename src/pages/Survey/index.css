@@ -79,24 +79,25 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.surveySubmit-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.surveySubmit {
-  background-color: lightgreen;
-  color: white;
-  border-radius: 8px;
-  margin-top: 5%;
-  padding: 3%;
-}
-
-.surveySubmit:hover {
-  background-color: green;
-}
-
 .surveyLabel {
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+.recomPoke {
+  padding: 20px;
+  background-color: rgb(218, 241, 255);
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.recomPoke p {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgb(0, 0, 75);
 }
