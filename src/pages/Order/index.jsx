@@ -11,6 +11,7 @@ const Order = () => {
 
   const { pokes } = usePokes();
   const { setInvoice } = useInvoice();
+
   const [amount, setAmount] = useState(1);
   const [order, setOrder] = useState([]);
   const [success, setSuccess] = useState(false);
@@ -95,7 +96,7 @@ const Order = () => {
   return (
     <div className="order-container">
       <div className="image-container">
-        <img src={poke.imageUrl} alt="poke-image" className="poke-image" />
+        <img src={poke?.imageUrl} alt="poke-image" className="poke-image" />
       </div>
       {poke && (
         <div className="content-container">

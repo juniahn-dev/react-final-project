@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useAllergyPreferences } from "../../atom/surveys";
 import "./index.css";
 
 const ExtraOrder = ({ title, data, setOrder }) => {
+  const { allergies, isVegan } = useAllergyPreferences();
+  console.log(allergies, isVegan);
+
   const [checkedItems, setCheckedItems] = useState([]);
 
   const handleCheckboxChange = (isChecked, item) => {
@@ -33,15 +37,24 @@ const ExtraOrder = ({ title, data, setOrder }) => {
       <div className="ordering">
         {data[title].map((p, idx) => {
           const isChecked = checkedItems.some((item) => item.name === p.name);
+          const isCombineAllergic = allergies.filter((it) =>
+            p.allergic.includes(it.toLowerCase())
+          );
 
           return (
-            <div key={`${title}-${idx}`} className="extra">
+            <div
+              key={`${title}-${idx}`}
+              className={`${
+                isCombineAllergic.length > 0 && "warning-allergic"
+              } extra`}
+            >
               <div className="checkbox-name">
                 <input
                   type="checkbox"
                   className="checkbox"
                   checked={isChecked}
                   onChange={(e) => handleCheckboxChange(e.target.checked, p)}
+                  disabled={isCombineAllergic.length > 0}
                 />
                 <div>{p.name}</div>
               </div>

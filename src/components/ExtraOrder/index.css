@@ -27,6 +27,11 @@
         margin-top: 10px;
       }
 
+      &.warning-allergic {
+        text-decoration: line-through;
+        color: lightgray;
+      }
+
       .checkbox-name {
         display: flex;
         align-items: center;

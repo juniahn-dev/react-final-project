@@ -1,17 +1,11 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePokes } from "../../atom/pokes";
-import runService from "../../service/HttpSerivce";
 import "./index.css";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const { pokes, setPokes } = usePokes();
-
-  useEffect(() => {
-    runService.get("poke.json").then((res) => setPokes(res.data));
-  }, [setPokes]);
+  const { pokes } = usePokes();
 
   return (
     <div className="home-container">

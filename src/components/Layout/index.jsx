@@ -1,8 +1,17 @@
+import { useEffect } from "react";
+import { usePokes } from "../../atom/pokes";
 import "./index.css";
 
 import { Link, Outlet } from "react-router-dom";
+import runService from "../../service/HttpSerivce";
 
 const Layout = () => {
+  const { setPokes } = usePokes();
+
+  useEffect(() => {
+    runService.get("poke.json").then((res) => setPokes(res.data));
+  }, [setPokes]);
+
   return (
     <div className="container">
       <nav className="header-container">
