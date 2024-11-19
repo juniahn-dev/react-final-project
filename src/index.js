@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Layout from "./components/Layout";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Order from "./pages/Order";
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="order/:id" element={<Order />} />
+            <Route path="cart" element={<Cart />} />
             <Route path="login" element={<Login />} />
             <Route path="survey" element={<Survey />} />
           </Route>

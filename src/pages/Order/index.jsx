@@ -60,15 +60,30 @@ const Order = () => {
   }, [amount, order, poke]);
 
   const addInvoice = () => {
-    setInvoice((prev) => [
-      ...prev,
-      {
-        userId: 1,
-        poke: { ...poke, amount },
-        additional: order,
-        price: totalPrice,
-      },
-    ]);
+    setInvoice((prev) => {
+      const updatedInvoice = { ...prev };
+      //TODO: get UserId
+      if (updatedInvoice[1]) {
+        updatedInvoice[1] = [
+          ...updatedInvoice[1],
+          {
+            poke: { ...poke, amount },
+            additional: order,
+            price: totalPrice,
+          },
+        ];
+      } else {
+        updatedInvoice[1] = [
+          {
+            poke: { ...poke, amount },
+            additional: order,
+            price: totalPrice,
+          },
+        ];
+      }
+
+      return updatedInvoice;
+    });
 
     setSuccess(true);
 

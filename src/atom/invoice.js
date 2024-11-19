@@ -1,5 +1,5 @@
 import { isNil } from "ramda";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { atom, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
@@ -7,7 +7,7 @@ const { persistAtom } = recoilPersist();
 
 const invoiceState = atom({
   key: "Invoice",
-  default: [],
+  default: null,
   effects_UNSTABLE: [persistAtom],
 });
 
@@ -18,8 +18,15 @@ export const useInvoice = (initValue) => {
     !isNil(initValue) && setInvoice(initValue);
   }, [initValue, setInvoice]);
 
+  // TODO: apply UserID
+  const targetInvoice = useMemo(() => {
+    const findInvoice = invoice[1];
+
+    return findInvoice || null;
+  }, [invoice]);
+
   return {
-    invoice,
+    invoice: targetInvoice,
     setInvoice,
   };
 };

@@ -20,12 +20,15 @@ const Home = () => {
           <div
             className="poke-card"
             onClick={() => navigate(`/order/${poke.id}`)}
+            key={poke.id}
           >
             <div>{poke.title}</div>
             <div>${poke.price}</div>
             <div className="allergic-container">
-              {poke.allergic.map((a) => (
-                <div className="allergic">{a}</div>
+              {poke.allergic.map((a, idx) => (
+                <div className="allergic" key={`${poke.id}-${idx}`}>
+                  {a}
+                </div>
               ))}
             </div>
           </div>
