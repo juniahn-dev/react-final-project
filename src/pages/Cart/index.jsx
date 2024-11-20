@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import LocationIcon from "../../assets/LocationIcon.svg";
 import ScheduleIcon from "../../assets/ScheduleIcon.svg";
 import { useInvoice } from "../../atom/invoice";
+import { useTransaction } from "../../atom/transaction";
 import "./index.css";
 
 const AdditionalRow = ({ additional }) => {
@@ -20,21 +21,66 @@ const AdditionalRow = ({ additional }) => {
 
 const Cart = () => {
   const navigate = useNavigate();
+  const nowDate = new Date();
 
-  const { invoice } = useInvoice();
+  const { invoice, setInvoice } = useInvoice();
+  const { setTransaction } = useTransaction();
 
   const totalPrice = useMemo(() => {
-    return Number(
-      invoice.reduce((result, i) => result + i.price, 0).toFixed(2)
+    return (
+      Number(invoice?.reduce((result, i) => result + i.price, 0).toFixed(2)) ||
+      0
     );
   }, [invoice]);
 
   const pst = useMemo(() => {
-    return Number(((totalPrice / 100) * 7).toFixed(2));
+    return Number(((totalPrice / 100) * 7).toFixed(2)) || 0;
   }, [totalPrice]);
   const gst = useMemo(() => {
-    return Number(((totalPrice / 100) * 5).toFixed(2));
+    return Number(((totalPrice / 100) * 5).toFixed(2)) || 0;
   }, [totalPrice]);
+
+  const buy = () => {
+    setTransaction((prev) => {
+      const updateTransaction = { ...prev };
+      const arriveDate = new Date();
+      arriveDate.setDate(nowDate.getDate() + 1);
+
+      //TODO: get UserId
+      if (updateTransaction[1]) {
+        updateTransaction[1] = [
+          ...updateTransaction[1],
+          {
+            invoice,
+            status: "ordered",
+            date: nowDate,
+            arriveDate: arriveDate,
+          },
+        ];
+      } else {
+        updateTransaction[1] = [
+          {
+            invoice,
+            status: "ordered",
+            date: nowDate,
+            arriveDate: arriveDate,
+          },
+        ];
+      }
+
+      return updateTransaction;
+    });
+
+    setInvoice((prev) => {
+      const updateInvoice = { ...prev };
+
+      updateInvoice[1] = [];
+
+      return updateInvoice;
+    });
+
+    navigate("/transactions");
+  };
 
   return (
     <div className="cart-container">
@@ -42,7 +88,7 @@ const Cart = () => {
       <div className="content-wrapper">
         <div>
           <div className="order-item-count">
-            YOUR ORDER ({invoice.length} ITEM)
+            YOUR ORDER ({invoice?.length} ITEM)
           </div>
           {invoice ? (
             <div className="invoice-wrapper">
@@ -77,7 +123,7 @@ const Cart = () => {
                             <AdditionalRow additional={additional.additions} />
                           )}
                         </div>
-                        <div>$ {price}</div>
+                        <div>$ {price.toFixed(2)}</div>
                       </div>
                     </div>
                   );
@@ -126,9 +172,11 @@ const Cart = () => {
             </div>
             <div className="amount-step">
               <div>Estimated order total</div>
-              <div>$ {totalPrice + pst + gst}</div>
+              <div>$ {(totalPrice + pst + gst).toFixed(2)}</div>
             </div>
-            <button className="pay-button">Continue to payment</button>
+            <button className="pay-button" onClick={buy}>
+              Continue to payment
+            </button>
           </div>
         </div>
       </div>

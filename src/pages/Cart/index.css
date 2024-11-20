@@ -125,6 +125,10 @@
       border-radius: 40px;
 
       color: white;
+
+      &:hover {
+        background-color: rgba(33, 33, 33, 0.855);
+      }
     }
   }
 }

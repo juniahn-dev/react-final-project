@@ -20,7 +20,7 @@ export const useInvoice = (initValue) => {
 
   // TODO: apply UserID
   const targetInvoice = useMemo(() => {
-    const findInvoice = invoice[1];
+    const findInvoice = invoice?.[1];
 
     return findInvoice || null;
   }, [invoice]);
