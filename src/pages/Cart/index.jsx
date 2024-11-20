@@ -24,7 +24,9 @@ const Cart = () => {
   const { invoice } = useInvoice();
 
   const totalPrice = useMemo(() => {
-    return invoice.reduce((result, i) => result + i.price, 0);
+    return Number(
+      invoice.reduce((result, i) => result + i.price, 0).toFixed(2)
+    );
   }, [invoice]);
 
   const pst = useMemo(() => {
