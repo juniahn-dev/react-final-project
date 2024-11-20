@@ -1,2 +1,12 @@
-.login-container {
+.background-image {
+    background-image: url('https://thepokeguy.ca/storage/page-components/September2023/IVHreN6IVzCQUQHJmj4s.webp'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+}
+    
+.wida
+{
+    width: 20rem;
 }
