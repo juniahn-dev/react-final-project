@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Order from "./pages/Order";
 import Survey from "./pages/Survey";
+import Transactions from "./pages/Transactions";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="login" element={<Login />} />
             <Route path="survey" element={<Survey />} />
+            <Route path="transactions" element={<Transactions />} />
           </Route>
         </Routes>
       </BrowserRouter>

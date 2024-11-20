@@ -15,11 +15,10 @@ const Layout = () => {
   return (
     <div className="container">
       <nav className="header-container">
-        <div>POKE</div>
+        <Link className="header-title" to="/">
+          P<span className="second">O</span>K<span className="fourth">E</span>
+        </Link>
         <ul className="nav-container">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
           <li>
             <Link to="/login">Login</Link>
           </li>
@@ -28,6 +27,9 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/transactions">Transactions</Link>
           </li>
         </ul>
       </nav>
