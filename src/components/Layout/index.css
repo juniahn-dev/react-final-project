@@ -9,6 +9,10 @@
   justify-content: space-between;
 
   margin-bottom: 20px;
+  background-color: #2AC1BC;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
 }
 
 .nav-container {
