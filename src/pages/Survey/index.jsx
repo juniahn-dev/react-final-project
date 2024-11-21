@@ -1,18 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAllergyPreferences, useSurveyAnswers } from "../../atom/surveys";
+import { useUser } from "../../atom/user";
 import FilterPoke from "../../components/FilterPoke";
 import "./index.css";
 
 export default function Survey() {
+  const navigate = useNavigate();
+
   // two modals
   const [showAllergyModal, setShowAllergyModal] = useState(false);
   const [showSurveyModal, setShowSurveyModal] = useState(false);
 
+  const { user } = useUser();
   // first modal
   const { allergies, setAllergies, isVegan, setIsVegan } =
     useAllergyPreferences();
   // second modal
   const { surveyAnswers, setSurveyAnswers } = useSurveyAnswers();
+
+  // recommendation
+  // const [recommendedPoke, setRecommendedPoke] = useState([]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   const allergyOptions = [
     "Salmon",

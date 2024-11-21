@@ -2,6 +2,7 @@ import { isNil } from "ramda";
 import { useEffect, useMemo } from "react";
 import { atom, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { useUser } from "./user";
 
 const { persistAtom } = recoilPersist();
 
@@ -13,17 +14,17 @@ const transactionState = atom({
 
 export const useTransaction = (initValue) => {
   const [transaction, setTransaction] = useRecoilState(transactionState);
+  const { user } = useUser();
 
   useEffect(() => {
     !isNil(initValue) && setTransaction(initValue);
   }, [initValue, setTransaction]);
 
-  // TODO: apply UserID
   const targetTransaction = useMemo(() => {
-    const findTransaction = transaction?.[1];
+    const findTransaction = transaction?.[user];
 
     return findTransaction || null;
-  }, [transaction]);
+  }, [transaction, user]);
 
   return {
     transaction: targetTransaction,
