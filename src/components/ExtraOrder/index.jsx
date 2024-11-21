@@ -37,16 +37,15 @@ const ExtraOrder = ({ title, data, setOrder }) => {
       <div className="ordering">
         {data[title].map((p, idx) => {
           const isChecked = checkedItems.some((item) => item.name === p.name);
-          const isCombineAllergic = allergies.filter((it) =>
+          const isCombineAllergic = allergies?.filter((it) =>
             p.allergic.includes(it.toLowerCase())
           );
 
           return (
             <div
               key={`${title}-${idx}`}
-              className={`${
-                isCombineAllergic.length > 0 && "warning-allergic"
-              } extra`}
+              className={`${isCombineAllergic.length > 0 && "warning-allergic"
+                } extra`}
             >
               <div className="checkbox-name">
                 <input

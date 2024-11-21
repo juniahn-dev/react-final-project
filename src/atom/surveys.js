@@ -2,6 +2,7 @@
 import { atom, useRecoilState } from "recoil";
 import { useEffect, useMemo } from "react";
 import { recoilPersist } from "recoil-persist";
+import { useUser } from "./user";
 
 const { persistAtom } = recoilPersist();
 
@@ -19,10 +20,7 @@ export const isVeganState = atom({
 
 export const surveyAnswersState = atom({
     key: "surveyAnswersState",
-    default: {
-        mainIngredient: [],
-        preferredFlavour: [],
-    },
+    default: {},
     effects_UNSTABLE: [persistAtom],
 });
 
@@ -30,24 +28,47 @@ export const surveyAnswersState = atom({
 export const useAllergyPreferences = (initValue) => {
     const [allergies, setAllergies] = useRecoilState(allergiesState);
     const [isVegan, setIsVegan] = useRecoilState(isVeganState);
+    const { user } = useUser();
 
     useEffect(() => {
         if (initValue) {
-            setAllergies(initValue.allergies || []);
-            setIsVegan(initValue.isVegan || false);
+            setAllergies((prev) => ({
+                ...prev,
+                [user]: initValue.allergies || [],
+            }));
+            setIsVegan((prev) => ({
+                ...prev,
+                [user]: initValue.isVegan || false,
+            }));
         }
-    }, [initValue, setAllergies, setIsVegan]);
+    }, [initValue, setAllergies, setIsVegan, user]);
+
+    const targetAllergy = useMemo(() => allergies?.[user] || [], [allergies, user]);
+    const targetVegan = useMemo(() => isVegan?.[user] || false, [isVegan, user]);
 
     return {
-        allergies,
+        allergies: targetAllergy,
         setAllergies,
-        isVegan,
+        isVegan: targetVegan,
         setIsVegan,
     };
 };
 
 // Survey answers
-export const useSurveyAnswers = () => {
+export const useSurveyAnswers = (initValue) => {
     const [surveyAnswers, setSurveyAnswers] = useRecoilState(surveyAnswersState);
-    return { surveyAnswers, setSurveyAnswers };
+    const { user } = useUser();
+
+    useEffect(() => {
+        if (initValue) {
+            setSurveyAnswers((prev) => ({
+                ...prev,
+                [user]: initValue.surveyAnswers || [],
+            }));
+        }
+    }, [initValue, setSurveyAnswers, user]);
+
+    const targetSurveyAnswers = useMemo(() => surveyAnswers?.[user] || [], [surveyAnswers, user]);
+
+    return { surveyAnswers: targetSurveyAnswers, setSurveyAnswers };
 };

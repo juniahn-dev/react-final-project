@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { usePokes } from "../../atom/pokes";
 import "./index.css";
 import { useRecoilValue } from "recoil";
-import { allergiesState } from "../../atom/surveys";
+import { allergiesState, useAllergyPreferences } from "../../atom/surveys";
 import { useState } from "react";
 
 const Home = () => {
@@ -10,13 +10,15 @@ const Home = () => {
 
   const { pokes } = usePokes();
 
-  const userAllergies = useRecoilValue(allergiesState);
+  const { allergies } =
+    useAllergyPreferences();
   const [filter, setFilter] = useState("All");
 
   const filteredPokes = (pokes || []).filter((poke) => {
     if (filter === "Without Allergies") {
+      console.log(poke);
       return !poke.allergic.some((allergy) =>
-        userAllergies.some(
+        allergies.some(
           (userAllergy) =>
             userAllergy.trim().toLowerCase() === allergy.trim().toLowerCase()
         )

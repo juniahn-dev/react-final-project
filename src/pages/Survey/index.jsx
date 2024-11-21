@@ -44,30 +44,46 @@ export default function Survey() {
   // first modal
   const handleAllergyChange = (e) => {
     const { value, checked } = e.target;
-    setAllergies((prev) =>
-      checked ? [...prev, value] : prev.filter((item) => item !== value)
-    );
+
+    setAllergies((prev) => {
+      const updatedAllergies = { ...prev };
+      const userAllergies = updatedAllergies[user] || [];
+
+      updatedAllergies[user] = checked
+        ? [...userAllergies, value] // checked
+        : userAllergies.filter((item) => item !== value); // remove check
+
+      return updatedAllergies;
+    });
   };
   const handleVeganChange = (e) => {
-    setIsVegan(e.target.checked);
+    const { checked } = e.target;
+
+    setIsVegan((prev) => ({
+      ...prev,
+      [user]: checked, // user
+    }));
   };
 
   // second modal
   const handleSurveyChange = (e) => {
     const { name, value, checked } = e.target;
 
-    // console.log("Before update:", surveyAnswers);
-
     setSurveyAnswers((prevState) => {
-      const updatedState = {
-        ...prevState,
-        [name]: checked
-          ? [...prevState[name], value]
-          : prevState[name].filter((item) => item !== value),
-      };
+      const userAnswers = prevState || {};
+      const userSurveyData = userAnswers[user] || [];
+      const currentAnswers = userSurveyData[0] || {};
 
-      // console.log("Updated state:", updatedState);
-      return updatedState;
+      const updatedAnswers = checked
+        ? [...(currentAnswers[name] || []), value]
+        : (currentAnswers[name] || []).filter((item) => item !== value);
+
+      const updatedSurveyData = [{ ...currentAnswers, [name]: updatedAnswers }];
+
+      return {
+        ...prevState,
+        [user]: updatedSurveyData,
+      };
     });
   };
 
@@ -91,21 +107,21 @@ export default function Survey() {
             </div>
             <h5>Allergy and Dietary Preferences</h5>
             <div className="modal-body">
-              {allergyOptions.map((allergy) => (
-                <label key={allergy}>
+              {allergyOptions.map((a) => (
+                <label key={a}>
                   <input
                     type="checkbox"
-                    value={allergy}
-                    checked={allergies.includes(allergy)}
+                    value={a}
+                    checked={(allergies || []).includes(a)}
                     onChange={handleAllergyChange}
                   />
-                  {allergy} Allergy
+                  {a} Allergy
                 </label>
               ))}
               <label>
                 <input
                   type="checkbox"
-                  checked={isVegan}
+                  checked={isVegan || false}
                   onChange={handleVeganChange}
                 />
                 Vegan
@@ -131,7 +147,7 @@ export default function Survey() {
                     type="checkbox"
                     name="mainIngredient"
                     value="meat"
-                    checked={surveyAnswers.mainIngredient.includes("meat")}
+                    checked={surveyAnswers.mainIngredient?.includes("meat")}
                     onChange={handleSurveyChange}
                   />
                   Meat
@@ -141,7 +157,7 @@ export default function Survey() {
                     type="checkbox"
                     name="mainIngredient"
                     value="fish"
-                    checked={surveyAnswers.mainIngredient.includes("fish")}
+                    checked={surveyAnswers.mainIngredient?.includes("fish")}
                     onChange={handleSurveyChange}
                   />
                   Fish
@@ -151,7 +167,7 @@ export default function Survey() {
                     type="checkbox"
                     name="mainIngredient"
                     value="vegetable"
-                    checked={surveyAnswers.mainIngredient.includes("vegetable")}
+                    checked={surveyAnswers.mainIngredient?.includes("vegetable")}
                     onChange={handleSurveyChange}
                   />
                   Vegetable
@@ -163,7 +179,7 @@ export default function Survey() {
                     type="checkbox"
                     name="mainIngredient"
                     value="seafood"
-                    checked={surveyAnswers.mainIngredient.includes("seafood")}
+                    checked={surveyAnswers.mainIngredient?.includes("seafood")}
                     onChange={handleSurveyChange}
                   />
                   Seafood
@@ -177,7 +193,7 @@ export default function Survey() {
                     type="checkbox"
                     name="preferredFlavour"
                     value="mild"
-                    checked={surveyAnswers.preferredFlavour.includes("mild")}
+                    checked={surveyAnswers.preferredFlavour?.includes("mild")}
                     onChange={handleSurveyChange}
                   />
                   Mild
@@ -187,7 +203,7 @@ export default function Survey() {
                     type="checkbox"
                     name="preferredFlavour"
                     value="spicy"
-                    checked={surveyAnswers.preferredFlavour.includes("spicy")}
+                    checked={surveyAnswers.preferredFlavour?.includes("spicy")}
                     onChange={handleSurveyChange}
                   />
                   Spicy
@@ -197,7 +213,7 @@ export default function Survey() {
                     type="checkbox"
                     name="preferredFlavour"
                     value="sweet"
-                    checked={surveyAnswers.preferredFlavour.includes("sweet")}
+                    checked={surveyAnswers.preferredFlavour?.includes("sweet")}
                     onChange={handleSurveyChange}
                   />
                   Sweet
@@ -207,7 +223,7 @@ export default function Survey() {
                     type="checkbox"
                     name="preferredFlavour"
                     value="savoury"
-                    checked={surveyAnswers.preferredFlavour.includes("savoury")}
+                    checked={surveyAnswers.preferredFlavour?.includes("savoury")}
                     onChange={handleSurveyChange}
                   />
                   Savoury
