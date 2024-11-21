@@ -12,13 +12,15 @@ const Home = () => {
   const { pokes } = usePokes();
   const { user } = useUsers();
 
-  const userAllergies = useRecoilValue(allergiesState);
+  const { allergies } =
+    useAllergyPreferences();
   const [filter, setFilter] = useState("All");
 
   const filteredPokes = (pokes || []).filter((poke) => {
     if (filter === "Without Allergies") {
+      console.log(poke);
       return !poke.allergic.some((allergy) =>
-        userAllergies.some(
+        allergies.some(
           (userAllergy) =>
             userAllergy.trim().toLowerCase() === allergy.trim().toLowerCase()
         )

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { useUser } from "./user";
 
 const { persistAtom } = recoilPersist();
 
@@ -18,36 +19,56 @@ export const isVeganState = atom({
 });
 
 export const surveyAnswersState = atom({
-  key: "surveyAnswersState",
-  default: {
-    mainIngredient: [],
-    preferredFlavour: [],
-  },
-  effects_UNSTABLE: [persistAtom],
+    key: "surveyAnswersState",
+    default: {},
+    effects_UNSTABLE: [persistAtom],
 });
 
 // Allergies & Vegan
 export const useAllergyPreferences = (initValue) => {
-  const [allergies, setAllergies] = useRecoilState(allergiesState);
-  const [isVegan, setIsVegan] = useRecoilState(isVeganState);
+    const [allergies, setAllergies] = useRecoilState(allergiesState);
+    const [isVegan, setIsVegan] = useRecoilState(isVeganState);
+    const { user } = useUser();
 
-  useEffect(() => {
-    if (initValue) {
-      setAllergies(initValue.allergies || []);
-      setIsVegan(initValue.isVegan || false);
-    }
-  }, [initValue, setAllergies, setIsVegan]);
+    useEffect(() => {
+        if (initValue) {
+            setAllergies((prev) => ({
+                ...prev,
+                [user]: initValue.allergies || [],
+            }));
+            setIsVegan((prev) => ({
+                ...prev,
+                [user]: initValue.isVegan || false,
+            }));
+        }
+    }, [initValue, setAllergies, setIsVegan, user]);
 
-  return {
-    allergies,
-    setAllergies,
-    isVegan,
-    setIsVegan,
-  };
+    const targetAllergy = useMemo(() => allergies?.[user] || [], [allergies, user]);
+    const targetVegan = useMemo(() => isVegan?.[user] || false, [isVegan, user]);
+
+    return {
+        allergies: targetAllergy,
+        setAllergies,
+        isVegan: targetVegan,
+        setIsVegan,
+    };
 };
 
 // Survey answers
-export const useSurveyAnswers = () => {
-  const [surveyAnswers, setSurveyAnswers] = useRecoilState(surveyAnswersState);
-  return { surveyAnswers, setSurveyAnswers };
+export const useSurveyAnswers = (initValue) => {
+    const [surveyAnswers, setSurveyAnswers] = useRecoilState(surveyAnswersState);
+    const { user } = useUser();
+
+    useEffect(() => {
+        if (initValue) {
+            setSurveyAnswers((prev) => ({
+                ...prev,
+                [user]: initValue.surveyAnswers || [],
+            }));
+        }
+    }, [initValue, setSurveyAnswers, user]);
+
+    const targetSurveyAnswers = useMemo(() => surveyAnswers?.[user] || [], [surveyAnswers, user]);
+
+    return { surveyAnswers: targetSurveyAnswers, setSurveyAnswers };
 };
