@@ -56,7 +56,7 @@ export default function Survey() {
   const handleSurveyChange = (e) => {
     const { name, value, checked } = e.target;
 
-    console.log("Before update:", surveyAnswers);
+    // console.log("Before update:", surveyAnswers);
 
     setSurveyAnswers((prevState) => {
       const updatedState = {
@@ -66,7 +66,7 @@ export default function Survey() {
           : prevState[name].filter((item) => item !== value),
       };
 
-      console.log("Updated state:", updatedState);
+      // console.log("Updated state:", updatedState);
       return updatedState;
     });
   };

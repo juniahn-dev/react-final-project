@@ -59,7 +59,7 @@
 }
 
 .surveyBtn {
-  background-color: pink;
+  background-color: #2AC1BC;
   color: white;
   font-size: 2rem;
   width: 50vw;
@@ -74,7 +74,7 @@
 }
 
 .surveyBtn:hover {
-  background-color: purple;
+  background-color: #0e8c88;
   transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
