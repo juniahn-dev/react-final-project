@@ -83,7 +83,7 @@ const Cart = () => {
     setInvoice((prev) => {
       const updateInvoice = { ...prev };
 
-      updateInvoice[1] = [];
+      updateInvoice[user] = [];
 
       return updateInvoice;
     });
@@ -91,7 +91,6 @@ const Cart = () => {
     navigate("/transactions");
   };
 
-  console.log(userInfo);
   return (
     <div className="cart-container">
       <div className="title">Your Cart</div>
