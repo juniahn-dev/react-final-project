@@ -33,7 +33,9 @@ const Layout = () => {
                 <Link to="/transactions">Transactions</Link>
               </li>
               <li>
-                <button onClick={() => setUser(null)}>Logout</button>
+                <button onClick={() => setUser(null)} className="logout-btn">
+                  Logout
+                </button>
               </li>
             </>
           ) : (

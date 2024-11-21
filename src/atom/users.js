@@ -29,7 +29,7 @@ export const useUsers = (initValue) => {
   return {
     users,
     user: targetUser,
-    lastId: users[0]?.id || null,
+    lastId: users[users?.length - 1]?.id || null,
     setUsers,
   };
 };

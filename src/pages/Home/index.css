@@ -1,3 +1,8 @@
+.welcome {
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .home-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -47,18 +52,23 @@
     margin: 3% 0;
   }
 
-
   #pokeDes {
     width: 90%;
   }
 }
 
 /* Dropdown */
-.dropdown {
-  position: relative;
+.dropdown-container {
   display: flex;
   justify-content: flex-end;
-  margin-right: 2%;
+
+  width: 100%;
+
+  .dropdown {
+    position: relative;
+    margin-right: 2%;
+    width: fit-content;
+  }
 }
 
 .dropdown-button {
@@ -72,8 +82,12 @@
 }
 
 .dropdown-menu {
-  display: none;
   position: absolute;
+  right: 0;
+  top: 44px;
+
+  display: none;
+
   background-color: white;
   min-width: 150px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
