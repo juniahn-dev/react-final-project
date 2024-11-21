@@ -14,9 +14,6 @@ export default function Survey() {
   // second modal
   const { surveyAnswers, setSurveyAnswers } = useSurveyAnswers();
 
-  // recommendation
-  // const [recommendedPoke, setRecommendedPoke] = useState([]);
-
   const allergyOptions = [
     "Salmon",
     "Peanut",
@@ -45,7 +42,7 @@ export default function Survey() {
   const handleSurveyChange = (e) => {
     const { name, value, checked } = e.target;
 
-    console.log("Before update:", surveyAnswers);
+    // console.log("Before update:", surveyAnswers);
 
     setSurveyAnswers((prevState) => {
       const updatedState = {
@@ -55,7 +52,7 @@ export default function Survey() {
           : prevState[name].filter((item) => item !== value),
       };
 
-      console.log("Updated state:", updatedState);
+      // console.log("Updated state:", updatedState);
       return updatedState;
     });
   };
