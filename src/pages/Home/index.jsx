@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import { usePokes } from "../../atom/pokes";
-import { allergiesState } from "../../atom/surveys";
+import { useAllergyPreferences } from "../../atom/surveys";
 import { useUsers } from "../../atom/users";
 import "./index.css";
 
