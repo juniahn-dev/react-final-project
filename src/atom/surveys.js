@@ -1,5 +1,5 @@
 // surveys.js
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { atom, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import { useUser } from "./user";
@@ -7,15 +7,15 @@ import { useUser } from "./user";
 const { persistAtom } = recoilPersist();
 
 export const allergiesState = atom({
-  key: "allergiesState",
-  default: [],
-  effects_UNSTABLE: [persistAtom],
+    key: "allergiesState",
+    default: [],
+    effects_UNSTABLE: [persistAtom],
 });
 
 export const isVeganState = atom({
-  key: "isVeganState",
-  default: false,
-  effects_UNSTABLE: [persistAtom],
+    key: "isVeganState",
+    default: false,
+    effects_UNSTABLE: [persistAtom],
 });
 
 export const surveyAnswersState = atom({
