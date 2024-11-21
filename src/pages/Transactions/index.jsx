@@ -1,9 +1,21 @@
 import { reverse } from "ramda";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTransaction } from "../../atom/transaction";
+import { useUser } from "../../atom/user";
 import "./index.css";
 
 const Transactions = () => {
+  const navigate = useNavigate();
+
+  const { user } = useUser();
   const { transaction } = useTransaction();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   return (
     <div>

@@ -1,9 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LocationIcon from "../../assets/LocationIcon.svg";
 import ScheduleIcon from "../../assets/ScheduleIcon.svg";
 import { useInvoice } from "../../atom/invoice";
 import { useTransaction } from "../../atom/transaction";
+import { useUser } from "../../atom/user";
+import { useUsers } from "../../atom/users";
 import "./index.css";
 
 const AdditionalRow = ({ additional }) => {
@@ -23,8 +25,16 @@ const Cart = () => {
   const navigate = useNavigate();
   const nowDate = new Date();
 
+  const { user } = useUser();
+  const { user: userInfo } = useUsers();
   const { invoice, setInvoice } = useInvoice();
   const { setTransaction } = useTransaction();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   const totalPrice = useMemo(() => {
     return (
@@ -46,10 +56,9 @@ const Cart = () => {
       const arriveDate = new Date();
       arriveDate.setDate(nowDate.getDate() + 1);
 
-      //TODO: get UserId
-      if (updateTransaction[1]) {
-        updateTransaction[1] = [
-          ...updateTransaction[1],
+      if (updateTransaction[user]) {
+        updateTransaction[user] = [
+          ...updateTransaction[user],
           {
             invoice,
             status: "ordered",
@@ -58,7 +67,7 @@ const Cart = () => {
           },
         ];
       } else {
-        updateTransaction[1] = [
+        updateTransaction[user] = [
           {
             invoice,
             status: "ordered",
@@ -82,6 +91,7 @@ const Cart = () => {
     navigate("/transactions");
   };
 
+  console.log(userInfo);
   return (
     <div className="cart-container">
       <div className="title">Your Cart</div>
@@ -146,7 +156,7 @@ const Cart = () => {
                 alt="location-image"
                 className="pickup-info-image"
               />
-              Location: 889 W Pender St #200, Vancouver, BC V6C 3B2
+              Location: {userInfo.address}
             </div>
             <div>
               <img

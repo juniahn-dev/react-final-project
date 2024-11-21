@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useInvoice } from "../../atom/invoice";
 import { usePokes } from "../../atom/pokes";
+import { useUser } from "../../atom/user";
 import ExtraOrder from "../../components/ExtraOrder";
 import extraData from "../../const/extra.json";
 import "./index.css";
@@ -9,6 +10,7 @@ import "./index.css";
 const Order = () => {
   const { id } = useParams();
 
+  const { user } = useUser();
   const { pokes } = usePokes();
   const { setInvoice } = useInvoice();
 
@@ -63,10 +65,9 @@ const Order = () => {
   const addInvoice = () => {
     setInvoice((prev) => {
       const updatedInvoice = { ...prev };
-      //TODO: get UserId
-      if (updatedInvoice[1]) {
-        updatedInvoice[1] = [
-          ...updatedInvoice[1],
+      if (updatedInvoice[user]) {
+        updatedInvoice[user] = [
+          ...updatedInvoice[user],
           {
             poke: { ...poke, amount },
             additional: order,
@@ -74,7 +75,7 @@ const Order = () => {
           },
         ];
       } else {
-        updatedInvoice[1] = [
+        updatedInvoice[user] = [
           {
             poke: { ...poke, amount },
             additional: order,
@@ -132,13 +133,17 @@ const Order = () => {
             <ExtraOrder title="dressing" data={extraData} setOrder={setOrder} />
             <ExtraOrder title="topping" data={extraData} setOrder={setOrder} />
           </div>
-          {success ? (
-            <div className="order-button">Success 🎉</div>
+          {user ? (
+            success ? (
+              <div className="order-button">Success 🎉</div>
+            ) : (
+              <div className="order-button" onClick={addInvoice}>
+                Add to order
+                <div className="total-price">${totalPrice.toFixed(2)}</div>
+              </div>
+            )
           ) : (
-            <div className="order-button" onClick={addInvoice}>
-              Add to order
-              <div className="total-price">${totalPrice.toFixed(2)}</div>
-            </div>
+            <div className="order-button">Login First</div>
           )}
         </div>
       )}

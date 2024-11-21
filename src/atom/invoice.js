@@ -2,6 +2,7 @@ import { isNil } from "ramda";
 import { useEffect, useMemo } from "react";
 import { atom, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { useUser } from "./user";
 
 const { persistAtom } = recoilPersist();
 
@@ -13,17 +14,17 @@ const invoiceState = atom({
 
 export const useInvoice = (initValue) => {
   const [invoice, setInvoice] = useRecoilState(invoiceState);
+  const { user } = useUser();
 
   useEffect(() => {
     !isNil(initValue) && setInvoice(initValue);
   }, [initValue, setInvoice]);
 
-  // TODO: apply UserID
   const targetInvoice = useMemo(() => {
-    const findInvoice = invoice?.[1];
+    const findInvoice = invoice?.[user];
 
     return findInvoice || null;
-  }, [invoice]);
+  }, [invoice, user]);
 
   return {
     invoice: targetInvoice,
