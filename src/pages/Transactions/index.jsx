@@ -21,7 +21,7 @@ const Transactions = () => {
     <div>
       <div className="title">Transactions</div>
       <div className="transaction-container">
-        {transaction &&
+        {transaction ? (
           reverse(transaction)?.map((t, idx) => {
             const { status, invoice, date, arriveDate } = t;
 
@@ -59,7 +59,10 @@ const Transactions = () => {
                 </div>
               </div>
             );
-          })}
+          })
+        ) : (
+          <div>Empty Transactions</div>
+        )}
       </div>
     </div>
   );

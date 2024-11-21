@@ -57,8 +57,6 @@ export default function Login() {
   };
 
   const register = () => {
-    console.log(lastId);
-
     const userInfo = {
       id: lastId ? lastId + 1 : 1,
       name: value.name,
@@ -67,6 +65,8 @@ export default function Login() {
       address: value.address,
     };
 
+    alert(`Welcome! ${value.name}`);
+    setIsRegister(false);
     setUsers((user) => [...user, userInfo]);
   };
 

@@ -1,14 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { usePokes } from "../../atom/pokes";
-import "./index.css";
-import { useRecoilValue } from "recoil";
-import { allergiesState } from "../../atom/surveys";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { usePokes } from "../../atom/pokes";
+import { allergiesState } from "../../atom/surveys";
+import { useUsers } from "../../atom/users";
+import "./index.css";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const { pokes } = usePokes();
+  const { user } = useUsers();
 
   const userAllergies = useRecoilValue(allergiesState);
   const [filter, setFilter] = useState("All");
@@ -32,12 +34,17 @@ const Home = () => {
 
   return (
     <>
-      <div className="dropdown">
-        <button className="dropdown-button">Filter</button>
-        <div class="dropdown-menu">
-          <span onClick={() => setFilter("All")}>All</span>
-          <span onClick={() => setFilter("Without Allergies")}>Without Allergies</span>
-          <span onClick={() => setFilter("Vegan")}>Vegan</span>
+      {user && <div className="welcome">Welcome {user.name}! 🤗</div>}
+      <div className="dropdown-container">
+        <div className="dropdown">
+          <button className="dropdown-button">Filter</button>
+          <div class="dropdown-menu">
+            <span onClick={() => setFilter("All")}>All</span>
+            <span onClick={() => setFilter("Without Allergies")}>
+              Without Allergies
+            </span>
+            <span onClick={() => setFilter("Vegan")}>Vegan</span>
+          </div>
         </div>
       </div>
 
